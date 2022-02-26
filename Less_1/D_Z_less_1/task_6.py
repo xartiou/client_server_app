@@ -4,18 +4,22 @@
 # что перед нами файл в неизвестной кодировке.
 # Задача: открыть этот файл БЕЗ ОШИБОК вне зависимости от того, в какой кодировке он был создан.
 
-import locale
-import chardet
+from chardet import detect
 
-print(locale.getpreferredencoding())
-# cp1251
-with open('test_file.txt', 'rb') as fl:
-    s = fl.read()
-    print(s)
-    print(chardet.detect(s))
-# b'\xd1\x81\xd0\xb5\xd1\x82\xd0\xb5\xd0\xb2\xd0\xbe\xd0\xb5
-# \xd0\xbf\xd1\x80\xd0\xbe\xd0\xb3\xd1\x80\xd0\xb0\xd0\xbc\xd0\xbc\xd0\xb8\xd1\x80\xd0\xbe\xd0\xb2\xd0\xb0\xd0\xbd\xd0\xb8\xd0\xb5\r\n\xd1\x81\xd0\xbe\xd0\xba\xd0\xb5\xd1\x82\r\n\xd0\xb4\xd0\xb5\xd0\xba\xd0\xbe\xd1\x80\xd0\xb0\xd1\x82\xd0\xbe\xd1\x80'
-# {'encoding': 'utf-8', 'confidence': 0.99, 'language': ''}
+# записываем в файл
+lines_lst = ['сетевое программирование', 'сокет', 'декоратор']
+with open('test_file.txt', 'w') as file:
+    for line in lines_lst:
+        file.write(f'{line}\n')
+file.close()
 
-with open('test_file.txt', encoding='utf-8', errors='replace') as fl:
-    print(fl.read())
+# узнаем кодировку
+with open('test_file.txt', 'rb') as file:
+    content = file.read()
+encoding = detect(content)['encoding']
+print(encoding)
+
+# открываем файл в правильной кодировке
+with open('test_file.txt', 'r', encoding=encoding) as file:
+    content = file.read()
+print(content)
