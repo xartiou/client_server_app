@@ -1,0 +1,11 @@
+{
+    "orders": [
+        {
+            "item": "Cheburashka",
+            "quantity": 1,
+            "price": 1560.0,
+            "buyer": "Krokodil Gena",
+            "date": "28.02.2022"
+        }
+    ]
+}
