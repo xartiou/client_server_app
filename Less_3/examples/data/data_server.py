@@ -3,7 +3,7 @@
 from  socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
 
 SERV_SOCK = socket(AF_INET, SOCK_STREAM)
-SERV_SOCK.setsockopt((SOL_SOCKET, SO_REUSEADDR, 1))
+SERV_SOCK.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 SERV_SOCK.bind(('', 8007))
 SERV_SOCK.listen()
 
