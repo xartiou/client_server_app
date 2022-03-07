@@ -8,7 +8,7 @@ CLIENT_SOCK.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
 try:
     while True:
         MES = 'Привет, сервер'
-        CLIENT_SOCK.sendto(MES.encode('utf-8'), ('localhost', 8888))
+        CLIENT_SOCK.sendto(MES.encode('utf-8'), ('localhost', 8800))
         MSG, ADDR = CLIENT_SOCK.recvfrom(1024)
         print(MSG.decode('utf-8'))
 finally:
