@@ -77,7 +77,11 @@ class TestUtils(unittest.TestCase):
         # дополнительно, проверим генерацию исключения, при не словаре на входе,
         # и здесь использован следующий формат assertRaises:
         # <<self.assertRaises(TypeError, test_function, args)>>
-        self.assertRaises(TypeError, send_message, test_socket, "wrong_dictionary")
+        self.assertRaises(TypeError, test_socket, send_message, "wrong_dictionary")
+
+        # другая запись assertRaises()
+        # with self.assertRaises(TypeError):
+        #     test_socket(send_message, "wrong_dictionary")
 
     def test_get_message(self):
         """
