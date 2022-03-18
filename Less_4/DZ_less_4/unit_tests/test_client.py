@@ -79,3 +79,6 @@ class TestClientClass(unittest.TestCase):
 
         test = process_answer(message)
         self.assertEqual(test, f'{status_code} : {error_msg}')
+
+if __name__ == '__main__':
+    unittest.main()

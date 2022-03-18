@@ -63,3 +63,6 @@ class TestUtilsClass(unittest.TestCase):
         send_message(test_socket, self.test_message)
         sended_message = json.loads(test_socket.encoded_message)
         self.assertDictEqual(sended_message, self.test_message)
+
+    if __name__ == '__main__':
+        unittest.main()

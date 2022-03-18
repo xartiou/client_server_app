@@ -54,3 +54,6 @@ class TestServerClass(unittest.TestCase):
         message[USER][ACCOUNT_NAME] = 'not_guest'
         response = process_client_message(message)
         self.assertDictEqual(response, self.error_dict)
+
+    if __name__ == '__main__':
+        unittest.main()
