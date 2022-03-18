@@ -4,72 +4,62 @@ import unittest
 import json
 
 sys.path.append(os.path.join(os.getcwd(), '..'))
-
-from common.utils import check_port, check_instance, send_msg, get_msg
-from common.variables import OK_DICT, ERROR_DICT, DICT_SEND, ENCODING
+from common.variables import USER, ACCOUNT_NAME, TIME, ACTION, PRESENCE, \
+    ENCODING, RESPONSE, ERROR
+from common.utils import get_message, send_message
 
 
 class TestSocket:
-    def __init__(self, test_dict):
-        self.test_dict = test_dict
+    def __init__(self, test_message):
+        self.test_message = test_message
         self.encoded_message = None
-        self.received_message = None
 
-    def send(self, message_to_send):
-        json_test_message = json.dumps(self.test_dict)
-        self.encoded_message = json_test_message.encode(ENCODING)
-        self.received_message = message_to_send
+    def recv(self, max_length):
+        json_message = json.dumps(self.test_message)
+        return json_message.encode(ENCODING)
 
-    def recv(self, max_len):
-        json_test_message = json.dumps(self.test_dict)
-        return json_test_message.encode(ENCODING)
+    def send(self, message):
+        json_message = json.dumps(self.test_message)
+        self.encoded_message = json_message.encode(ENCODING)
 
 
-class TestClass(unittest.TestCase):
-    def setUP(self):
+class TestUtilsClass(unittest.TestCase):
+    test_message = {
+        ACTION: PRESENCE,
+        TIME: 1.1,
+        USER: {
+            ACCOUNT_NAME: 'test'
+        }
+    }
+    success_dict = {RESPONSE: 200}
+    error_dict = {RESPONSE: 400, ERROR: 'Bad Request'}
+
+    def setUp(self) -> None:
         pass
 
-    def tearDown(self):
+    def tearDown(self) -> None:
         pass
 
-    def test_check_port(self):
-        self.assertIs(check_port(2000), None)
+    def test_get_message_returns_type_dict(self):
+        test_socket = TestSocket(self.test_message)
+        response = get_message(test_socket)
+        self.assertIsInstance(response, dict)
 
-    def test_check_instance(self):
-        self.assertIs(check_instance(200, int), None)
+    def test_get_message_response_equals(self):
+        test_socket = TestSocket(self.test_message)
+        response = get_message(test_socket)
+        self.assertDictEqual(response, self.test_message)
 
-    def test_send_msg_ok(self):
-        test_socket = TestSocket(DICT_SEND)
-        send_msg(test_socket, DICT_SEND)
-        self.assertEqual(test_socket.encoded_message, test_socket.received_message)
+    def test_send_message_raises_type_error(self):
+        test_socket = TestSocket(self.test_message)
+        self.assertRaises(
+            TypeError,
+            send_message,
+            (test_socket, self.test_message)
+        )
 
-    def test_bytes_send_msg(self):
-        test_socket = TestSocket(DICT_SEND)
-        send_msg(test_socket, DICT_SEND)
-        self.assertIsInstance(test_socket.encoded_message, bytes)
-
-    def test_no_dict_send_msg(self):
-        test_socket = TestSocket(DICT_SEND)
-        send_msg(test_socket, DICT_SEND)
-        self.assertNotIsInstance(test_socket.encoded_message, dict)
-
-    def test_get_msg_ok(self):
-        test_socket_ok = TestSocket(OK_DICT)
-        self.assertEqual(get_msg(test_socket_ok), OK_DICT)
-
-    def test_get_msg_err(self):
-        test_socket_err = TestSocket(ERROR_DICT)
-        self.assertEqual(get_msg(test_socket_err), ERROR_DICT)
-
-    def test_dict_get_msg(self):
-        test_socket_ok = TestSocket(OK_DICT)
-        self.assertIsInstance(get_msg(test_socket_ok), dict)
-
-    def test_no_str_get_msg(self):
-        test_socket = TestSocket(DICT_SEND)
-        send_msg(test_socket, DICT_SEND)
-        self.assertNotIsInstance(test_socket.encoded_message, str)
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_send_message_encoding(self):
+        test_socket = TestSocket(self.test_message)
+        send_message(test_socket, self.test_message)
+        sended_message = json.loads(test_socket.encoded_message)
+        self.assertDictEqual(sended_message, self.test_message)
