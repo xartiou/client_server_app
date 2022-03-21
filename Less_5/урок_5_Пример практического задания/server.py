@@ -7,9 +7,9 @@ import json
 import logging
 import logs.config_server_log
 from errors import IncorrectDataRecivedError
-from common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
+from common_ex.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
     RESPONSE, DEFAULT_PORT, MAX_CONNECTIONS, ERROR
-from common.utils import get_message, send_message
+from common_ex.utils import get_message, send_message
 
 #Инициализация логирования сервера.
 SERVER_LOGGER = logging.getLogger('server')

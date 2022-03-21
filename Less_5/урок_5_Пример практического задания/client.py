@@ -8,9 +8,9 @@ import argparse
 import logging
 import logs.config_client_log
 from errors import ReqFieldMissingError
-from common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
+from common_ex.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
     RESPONSE, DEFAULT_PORT, ERROR, DEFAULT_IP_ADDRESS
-from common.utils import get_message, send_message
+from common_ex.utils import get_message, send_message
 
 
 # Инициализация клиентского логера

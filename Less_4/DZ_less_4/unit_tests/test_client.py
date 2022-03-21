@@ -3,9 +3,9 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.getcwd(), '..'))
-from common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
+from Less_5.DZ_less_5.common.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
     ERROR, RESPONSE
-from client import create_presence, process_answer
+from Less_5.DZ_less_5.client import create_presence, process_ans
 
 
 class TestClientClass(unittest.TestCase):
@@ -50,13 +50,13 @@ class TestClientClass(unittest.TestCase):
         self.assertDictEqual(test, presense)
 
     def test_process_answer_returns_string(self):
-        test = process_answer({RESPONSE: 200})
+        test = process_ans({RESPONSE: 200})
         self.assertIsInstance(test, str)
 
     def test_process_answer_raises_value_error(self):
         self.assertRaises(
             ValueError,
-            process_answer,
+            process_ans
             ({ERROR: 'Bad Request'},)
         )
 
@@ -66,7 +66,7 @@ class TestClientClass(unittest.TestCase):
             RESPONSE: status_code,
         }
 
-        test = process_answer(message)
+        test = process_ans(message)
         self.assertEqual(test, f'{status_code} : OK')
 
     def test_process_answer_error_equal(self):
@@ -77,7 +77,7 @@ class TestClientClass(unittest.TestCase):
             ERROR: error_msg
         }
 
-        test = process_answer(message)
+        test = process_ans(message)
         self.assertEqual(test, f'{status_code} : {error_msg}')
 
 if __name__ == '__main__':
