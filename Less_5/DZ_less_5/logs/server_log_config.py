@@ -6,7 +6,7 @@ import logging
 import logging.handlers
 # sys.path.append(os.path.join(os.getcwd(), '..'))
 sys.path.append('../')
-from Less_5.DZ_less_5.common.variables import LOGGING_LEVEL
+from common.variables import LOGGING_LEVEL
 
 # создаём формировщик логов (formatter):
 # # "<дата-время> <уровеньважности> <имямодуля> <сообщение>"
