@@ -26,4 +26,8 @@ if __name__ == '__main__':
     STREAM_HANDLER.setFormatter(FORMATTER)
     LOG.addHandler(STREAM_HANDLER)
     # В логгирование передаем имя текущей функции и имя вызвавшей функции
-    LOG.debug('Отладочное сообщение')
+    LOG.critical('Критическая ошибка')
+    LOG.error('Ошибка')
+    LOG.warning('Предупреждения')
+    LOG.info('Информационное сообщение')
+    LOG.debug('Отладочная информация')

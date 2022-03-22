@@ -29,4 +29,5 @@ LOG.setLevel(logging.DEBUG)
 
 # Передать сообщение обработчику
 #log.info('Замечательный день для релиза!')
-LOG.info("Параметры подключения: %(host)s, %(port)d", PARAMS)
+if __name__ == '__main__':
+    LOG.info("Параметры для подключения: %(host)s, %(port)d", PARAMS)

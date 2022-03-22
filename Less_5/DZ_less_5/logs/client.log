@@ -2,3 +2,17 @@
 2022-03-21 09:03:17,130 ERROR    client_log_config.py Ошибка
 2022-03-21 09:03:17,130 DEBUG    client_log_config.py Отладочная информация
 2022-03-21 09:03:17,130 INFO     client_log_config.py Информационное сообщение
+2022-03-22 09:33:35,590 CRITICAL client_log_config.py Критическая ошибка
+2022-03-22 09:33:35,590 ERROR    client_log_config.py Ошибка
+2022-03-22 09:33:35,590 DEBUG    client_log_config.py Отладочная информация
+2022-03-22 09:33:35,590 INFO     client_log_config.py Информационное сообщение
+2022-03-22 10:19:13,507 CRITICAL client_log_config.py Критическая ошибка
+2022-03-22 10:19:13,507 ERROR    client_log_config.py Ошибка
+2022-03-22 10:19:13,507 WARNING  client_log_config.py Предупреждения
+2022-03-22 10:19:13,507 INFO     client_log_config.py Информационное сообщение
+2022-03-22 10:19:13,507 DEBUG    client_log_config.py Отладочная информация
+2022-03-22 10:22:38,402 CRITICAL client_log_config.py Критическая ошибка
+2022-03-22 10:22:38,402 ERROR    client_log_config.py Ошибка
+2022-03-22 10:23:37,655 CRITICAL client_log_config.py Критическая ошибка
+2022-03-22 10:23:37,655 ERROR    client_log_config.py Ошибка
+2022-03-22 10:23:37,655 WARNING  client_log_config.py Предупреждения

@@ -1,7 +1,10 @@
 """Утилиты"""
 
+import sys
+from pprint import pprint
+pprint(sys.path)
 import json
-from common.variables import MAX_PACKAGE_LENGTH, ENCODING
+from common_ex.variables import MAX_PACKAGE_LENGTH, ENCODING
 
 def get_message(client):
     '''
