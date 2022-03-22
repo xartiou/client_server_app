@@ -10,7 +10,7 @@ from common.variables import LOGGING_LEVEL
 
 # создаём формировщик логов (formatter):
 # # "<дата-время> <уровеньважности> <имямодуля> <сообщение>"
-SERVER_FORMATTER = logging.Formatter('%(asctime)s %(levelname)-8s %(filename)s %(message)s')
+SERVER_FORMATTER = logging.Formatter('%(asctime)s %(levelname)-10s %(filename)s %(message)s')
 
 # Подготовка имени файла для логирования
 PATH = os.path.dirname(os.path.abspath(__file__))
@@ -21,7 +21,9 @@ STREAM_HANDLER = logging.StreamHandler(sys.stderr)
 STREAM_HANDLER.setFormatter(SERVER_FORMATTER)
 STREAM_HANDLER.setLevel(logging.ERROR)
 # На стороне сервера необходимо настроить ежедневную ротацию лог-файлов.
-LOG_FILE = logging.handlers.TimedRotatingFileHandler(PATH, encoding='utf8', interval=1, when='S')
+# class logging.handlers.TimedRotatingFileHandler(filename, when='h', interval=1, backupCount=0, encoding=None,
+# delay=False, utc=False, atTime=None, errors=None)
+LOG_FILE = logging.handlers.TimedRotatingFileHandler(PATH, encoding='utf-8', when='D', interval=1 )
 LOG_FILE.setFormatter(SERVER_FORMATTER)
 
 # создаём регистратор и настраиваем его
@@ -34,5 +36,6 @@ LOGGER.setLevel(LOGGING_LEVEL)
 if __name__ == '__main__':
     LOGGER.critical('Критическая ошибка')
     LOGGER.error('Ошибка')
-    LOGGER.debug('Отладочная информация')
+    LOGGER.warning('Предупреждения')
     LOGGER.info('Информационное сообщение')
+    LOGGER.debug('Отладочная информация')

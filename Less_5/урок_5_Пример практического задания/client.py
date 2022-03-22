@@ -13,7 +13,7 @@ from common_ex.variables import ACTION, PRESENCE, TIME, USER, ACCOUNT_NAME, \
 from common_ex.utils import get_message, send_message
 
 
-# Инициализация клиентского логера
+# Создаем клиентский логгер
 CLIENT_LOGGER = logging.getLogger('client')
 
 
@@ -81,6 +81,7 @@ def main():
     # Инициализация сокета и обмен
 
     try:
+        #  выбираем ошибки, которые могут возникнуть при отправке сообщений
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport.connect((server_address, server_port))
         message_to_server = create_presence()

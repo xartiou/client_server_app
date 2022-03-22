@@ -8,7 +8,7 @@ from common.variables import LOGGING_LEVEL
 
 # создаём формировщик логов (formatter):
 # "<дата-время> <уровеньважности> <имямодуля> <сообщение>"
-CLIENT_FORMATTER = logging.Formatter('%(asctime)s %(levelname)-8s %(filename)s %(message)s')
+CLIENT_FORMATTER = logging.Formatter('%(asctime)s %(levelname)-10s %(filename)s %(message)s')
 
 # Подготовка имени файла для логирования
 PATH = os.path.dirname(os.path.abspath(__file__))
