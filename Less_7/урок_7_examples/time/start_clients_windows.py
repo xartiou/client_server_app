@@ -14,7 +14,7 @@ while True:
         break
 
     elif USER == 's':
-        for _ in range(10):
+        for _ in range(5):
 
             P_LIST.append(Popen('python time_client_random.py', creationflags=CREATE_NEW_CONSOLE))
 
