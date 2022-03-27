@@ -1,4 +1,4 @@
-"""Программа сервера для получения приветствия от клиента"""
+""" Программа сервера для получения приветствия от клиента и отправки ответа """
 
 from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR
 
@@ -18,8 +18,8 @@ try:
                 # find CLIENT_SOCK and remove from DATA
                 SOCKETS.remove(CLIENT_SOCK)
                 CLIENT_SOCK.close()
-            print(f"Сообщение: {DATA.decode('utf-8')} было отправлено ")
-            MSG = 'Привет, клиент!'
+            print(f"Сообщение: {DATA.decode('utf-8')} было отправлено клиентом: {ADDR})")
+            MSG = 'Привет, клиент'
             CLIENT_SOCK.send(MSG.encode('utf-8'))
 finally:
     SERV_SOCK.close()
