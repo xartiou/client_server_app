@@ -33,7 +33,7 @@ EVENT_2 = threading.Event()  # по умолчанию == False
 # определяем потоки
 # в каждом потоке запускаем на выполнение ф-цию writer
 # args - позиционные аргументы для ф-ции writer
-# 0 или 1, как выодимое значение
+# 0 или 1, как выводимое значение
 # EVENT_1, EVENT_2 - объекты событий
 THR_1 = threading.Thread(target=writer, args=('Я-первый поток', EVENT_2, EVENT_1))
 THR_2 = threading.Thread(target=writer, args=('Я-второй поток', EVENT_1, EVENT_2))
